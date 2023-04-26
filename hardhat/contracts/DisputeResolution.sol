@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: None
 pragma solidity ^0.8.0;
 
+// 'DisputeResolution' contract will provide a mechanism for dispute resolution 
+// between users, evaluating claims and making decisions based on available data.
 contract DisputeResolution {
     // 'DisputeStatus' stores the possible status of the dispute
     enum DisputeStatus {
