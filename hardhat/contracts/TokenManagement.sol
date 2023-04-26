@@ -2,9 +2,15 @@
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "@openzeppelin/contracts/ownership/Ownable.sol";
 
 contract TokenManagement is ERC20 {
+    address public owner;
+
+    modifier onlyOwner() {
+        require(owner == msg.sender);
+        _;
+    }
+
     constructor(
         uint256 initialSupply
     ) ERC20("DecentralizedJobMarketToken", "DJMT") {
