@@ -8,21 +8,27 @@ contract PlatformGovernance is Ownable {
     TimelockController private timelock;
 
     event ProposalCreated(
-        uint indexed proposalId,
+        bytes32 indexed operationId,
         address indexed proposer,
         string description,
         address target,
         bytes data,
         uint256 delay
     );
-    event ProposalExecuted(uint indexed proposalId);
+    event ProposalExecuted(bytes32 indexed operationId);
 
     constructor(
         uint256 _minDelay,
         address[] memory proposers,
-        address[] memory executors
+        address[] memory executors,
+        address vetoer
     ) {
-        timelock = new TimelockController(_minDelay, proposers, executors);
+        timelock = new TimelockController(
+            _minDelay,
+            proposers,
+            executors,
+            vetoer
+        );
     }
 
     function createProposal(
@@ -30,16 +36,25 @@ contract PlatformGovernance is Ownable {
         bytes memory data,
         uint256 delay,
         string memory description
-    ) public onlyOwner returns (uint) {
-        bytes32 operationId = timelock.hashOperation(target, 0, data, 0, delay);
-        timelock.schedule(target, 0, data, 0, delay, operationId);
-
-        uint proposalId = uint(
-            keccak256(abi.encodePacked(block.timestamp, operationId))
+    ) public onlyOwner returns (bytes32) {
+        bytes32 operationId = timelock.hashOperation(
+            target,
+            0,
+            data,
+            0,
+            bytes32(delay)
+        );
+        timelock.schedule(
+            target,
+            0,
+            data,
+            0,
+            bytes32(delay),
+            uint256(operationId)
         );
 
         emit ProposalCreated(
-            proposalId,
+            operationId,
             msg.sender,
             description,
             target,
@@ -47,19 +62,18 @@ contract PlatformGovernance is Ownable {
             delay
         );
 
-        return proposalId;
+        return operationId;
     }
 
     function executeProposal(
-        uint proposalId,
+        bytes32 operationId,
         address target,
         bytes memory data,
         uint256 delay
     ) public onlyOwner {
-        bytes32 operationId = timelock.hashOperation(target, 0, data, 0, delay);
-        timelock.execute(target, 0, data, 0, delay, operationId);
+        timelock.execute(target, 0, data, bytes32(delay), operationId);
 
-        emit ProposalExecuted(proposalId);
+        emit ProposalExecuted(operationId);
     }
 
     function getTimelockAddress() public view returns (address) {
