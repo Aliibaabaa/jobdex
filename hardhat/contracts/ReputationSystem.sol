@@ -1,7 +1,12 @@
 // SPDX-License-Identifier: None
 pragma solidity ^0.8.0;
 
+import "./UserRegistry.sol";
+
 contract ReputationSystem {
+    // Add an instance of the UserRegistry contract
+    UserRegistry userRegistry;
+
     // Enum to define the type of review: Employer or JobSeeker
     enum ReviewType {
         Employer,
@@ -37,6 +42,11 @@ contract ReputationSystem {
         uint256 timestamp
     );
 
+    // Add constructor to receive the address of the UserRegistry contract
+    constructor(address _userRegistry) {
+        userRegistry = UserRegistry(_userRegistry);
+    }
+
     // Function to submit a new review
     function submitReview(
         uint _targetUserId,
@@ -44,6 +54,14 @@ contract ReputationSystem {
         uint _rating,
         string memory _comment
     ) public {
+        // Check if the target user is registered
+        require(
+            userRegistry.isUserRegistered(
+                userRegistry.getUserById(_targetUserId).wallet
+            ),
+            "User not registered"
+        );
+
         // Ensure the rating is between 1 and 5
         require(
             _rating >= 1 && _rating <= 5,
