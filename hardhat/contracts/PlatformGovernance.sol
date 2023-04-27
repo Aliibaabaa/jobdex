@@ -5,10 +5,14 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/access/Ownable.sol";
 // Import the TimelockController contract for managing governance proposals
 import "@openzeppelin/contracts/governance/TimelockController.sol";
+import "./TokenManagement.sol";
 
 contract PlatformGovernance is Ownable {
     // Declare the TimelockController instance
     TimelockController private timelock;
+
+    // Add an instance of the TokenManagement contract
+    TokenManagement private tokenManagement;
 
     // Event emitted when a new proposal is created
     event ProposalCreated(
@@ -27,7 +31,8 @@ contract PlatformGovernance is Ownable {
         uint256 _minDelay,
         address[] memory proposers,
         address[] memory executors,
-        address vetoer
+        address vetoer,
+        address _tokenManagement
     ) {
         timelock = new TimelockController(
             _minDelay,
@@ -35,6 +40,8 @@ contract PlatformGovernance is Ownable {
             executors,
             vetoer
         );
+
+        tokenManagement = TokenManagement(_tokenManagement);
     }
 
     // Function to create a new proposal
@@ -93,5 +100,40 @@ contract PlatformGovernance is Ownable {
     // Function to get the address of the TimelockController instance
     function getTimelockAddress() public view returns (address) {
         return address(timelock);
+    }
+
+    // Add mint, burn and transfer functions that interact with TokenManagement contract
+    function mintTokens(address to, uint256 amount) public onlyOwner {
+        require(
+            timelock.isOperationPending(
+                keccak256(abi.encodePacked("mint", to, amount))
+            ),
+            "Operation not approved"
+        );
+        tokenManagement.mint(to, amount);
+    }
+
+    function burnTokens(address from, uint256 amount) public onlyOwner {
+        require(
+            timelock.isOperationPending(
+                keccak256(abi.encodePacked("burn", from, amount))
+            ),
+            "Operation not approved"
+        );
+        tokenManagement.burn(from, amount);
+    }
+
+    function transferTokens(
+        address from,
+        address to,
+        uint256 amount
+    ) public onlyOwner {
+        require(
+            timelock.isOperationPending(
+                keccak256(abi.encodePacked("transfer", from, to, amount))
+            ),
+            "Operation not approved"
+        );
+        tokenManagement.transferFrom(from, to, amount);
     }
 }
