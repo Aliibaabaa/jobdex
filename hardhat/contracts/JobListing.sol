@@ -1,7 +1,16 @@
 // SPDX-License-Identifier: None
 pragma solidity ^0.8.0;
 
+import "./ReputationSystem.sol";
+import "./TokenManagement.sol";
+import "./UserRegistry.sol";
+
 contract JobListing {
+    // Add instances of the contracts
+    ReputationSystem reputationSystem;
+    TokenManagement tokenManagement;
+    UserRegistry userRegistry;
+
     // Struct to store data about a job listing
     struct Job {
         uint id; // Unique identifier for the job listing
@@ -43,6 +52,17 @@ contract JobListing {
 
     // Event emitted when a job listing is removed
     event JobRemoved(uint indexed jobId);
+
+    // Add constructor to receive the addresses of the required contracts
+    constructor(
+        address _reputationSystem,
+        address _tokenManagement,
+        address _userRegistry
+    ) {
+        reputationSystem = ReputationSystem(_reputationSystem);
+        tokenManagement = TokenManagement(_tokenManagement);
+        userRegistry = UserRegistry(_userRegistry);
+    }
 
     // Function to post a new job listing
     function postJob(
@@ -163,5 +183,47 @@ contract JobListing {
 
         // Return the array of active Job structs
         return allJobs;
+    }
+
+    // Complete job function
+    function completeJob(
+        uint jobId,
+        uint reviewRating,
+        string memory reviewComment
+    ) public {
+        // Fetch job and user information
+        Job memory job = getJob(jobId);
+        UserRegistry.User memory jobSeeker = userRegistry.getUserById(job.id);
+        UserRegistry.User memory employer = userRegistry.getUserByAddress(
+            job.employer
+        );
+
+        require(job.isActive, "Job is not active");
+        require(
+            employer.userType == UserRegistry.UserType.Employer,
+            "Only an employer can complete a job"
+        );
+        require(
+            jobSeeker.userType == UserRegistry.UserType.JobSeeker,
+            "Job must be assigned to a job seeker"
+        );
+
+        // Transfer tokens from employer to job seeker
+        tokenManagement.transferFrom(
+            employer.wallet,
+            jobSeeker.wallet,
+            job.compensation
+        );
+
+        // Update reputation of job seeker
+        reputationSystem.submitReview(
+            jobSeeker.id,
+            ReputationSystem.ReviewType.JobSeeker,
+            reviewRating,
+            reviewComment
+        );
+
+        // Set job as inactive
+        job.isActive = false;
     }
 }
