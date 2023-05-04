@@ -4,7 +4,7 @@
     text-align: left;
     margin: 2rem 2rem 2rem 0rem;
     padding: 1rem;
-    box-shadow: 1rem 1rem 2rem 1rem lightgray;
+    box-shadow: 5px 8px 3px 5px rgba(211, 211, 211, 0.849);
     border-radius: 0.5rem;
     background: hsl(213, 20%, 89%);
 }

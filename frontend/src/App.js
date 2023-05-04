@@ -14,6 +14,7 @@ import Education from './components/ProfileDetails/Education';
 import AddInfo from './components/ProfileDetails/AddInfo';
 import MyProfile from './components/ProfileDetails/MyProfile';
 import WorkExperience from './components/ProfileDetails/WorkExp';
+import UploadResume from './components/ProfileDetails/UploadResume';
 function App() {
 
   return (
@@ -45,9 +46,9 @@ function App() {
           <Route path="/perdetails" element={<PersonalDetails />} />
           <Route path="/prof-educ" element={<Education />} />
           <Route path="/prof-workexp" element={<WorkExperience />} />
-          <Route path="/aboutme" element={<PersonalDetails />} />
+          <Route path="/skills" element={<PersonalDetails />} />
           <Route path="/addinfo" element={<AddInfo />} />
-          <Route path="/upresume" element={<PersonalDetails />} />
+          <Route path="/upresume" element={<UploadResume />} />
         </Routes>
 
       </main >

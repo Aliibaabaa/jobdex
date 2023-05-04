@@ -17,6 +17,8 @@ import AddInfo from './AddInfo';
 import Education from './Education';
 import WorkExp from './WorkExp';
 import RightDetails from './RightDetails';
+import UploadResume from './UploadResume';
+import Footer from '../Footer';
 
 const MyProfile = ({ children }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -38,14 +40,14 @@ const MyProfile = ({ children }) => {
             icon: <FaGraduationCap />
         },
         {
-            path: "/aboutme",
-            name: "AboutMe",
-            icon: <FaUserAlt />
+            path: "/skills",
+            name: "Skills and Expertise",
+            icon: < FaStickyNote />
         },
         {
             path: "/addinfo",
-            name: "Additional Info",
-            icon: < FaStickyNote />
+            name: "AboutMe",
+            icon: <FaUserAlt />
         },
         {
             path: "/upresume",
@@ -93,13 +95,14 @@ const MyProfile = ({ children }) => {
                     </div> */}
                         <div className="bottom-seg">
                             <div className="right-side">
-                                <RightDetails />
+                                {/* <RightDetails /> */}
+                                <WorkExp />
 
                             </div>
                             <div className="left-side">
-                                <AddInfo />
                                 <Education />
-
+                                <AddInfo />
+                                <UploadResume />
                             </div>
                         </div>
                     </div>

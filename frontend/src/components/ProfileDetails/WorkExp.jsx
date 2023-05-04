@@ -44,19 +44,7 @@ const WorkExp = () => {
             </div>
             <hr id="hr-post" />
 
-            <div className="bodyPortion">
-                <h5> Position </h5>
-                <h6> Company Name </h6>
-                <h6> Joined Duration </h6>
-                <p> Job Description/Roles
-                    <ul>
-                        <li>Sample Role</li>
-                        <li>Sample Achievement</li>
-                        <li>Sample Experience Description</li>
-                    </ul>
-                </p>
-            </div>
-            <hr id="hr-post" />
+
 
             <div className="footerP">
                 <div className="postCreateDate">
