@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: None
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
 // 'DisputeResolution' contract will provide a mechanism for dispute resolution 
