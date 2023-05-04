@@ -1,0 +1,128 @@
+:root {
+    --main-color: #030332;
+    --secondary-color: #16415bce;
+}
+
+.prof-wrapper {
+    height: 100vh;
+    width: 100vw;
+    margin: 20px;
+    overflow: visible;
+}
+
+.MainProfile {
+    height: 100vh;
+    /* width: 100vw; */
+    background: lightgray;
+    overflow-x: hidden;
+    z-index: -2;
+}
+
+.MainProfile1 {
+    /* width: 100vw; */
+    background: lightgray;
+    overflow-x: hidden;
+
+}
+
+.MainProfile .profile-container {
+    width: 90%;
+    /* height: 100%; */
+    background: white;
+    margin: 0;
+    /* z-index: -2; */
+    position: absolute;
+}
+
+.MainProfile1 .profile-container1 {
+    width: 90%;
+    height: 100vh;
+    background: white;
+    margin: auto;
+    /* z-index: -2; */
+    position: absolute;
+}
+
+.MainProfile1 .profile-container1 .top-seg {
+    height: 35%;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.MainProfile1 .profile-container1 .top-seg .user-profile-bg-image {
+    height: 80%;
+    width: 100%;
+    background: #cb1c1c;
+    overflow: hidden;
+}
+
+.MainProfile1 .profile-container1 .top-seg .user-profile-bg-image #bg-prf-img {
+    height: 100vh;
+    width: 100vw;
+}
+
+.MainProfile1 .profile-container1 .top-seg .user-profile-image {
+    position: absolute;
+    height: 70%;
+    width: 13%;
+    border-radius: 50%;
+    transform: translateX(50%);
+    right: 90%;
+    background-color: rgb(64, 44, 44);
+    bottom: -2rem;
+    border: 2px solid white;
+    z-index: 2;
+}
+
+.MainProfile1 .profile-container1 .top-seg .user-profile-image #prf-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.MainProfile1 .profile-container1 .top-seg .UserName {
+    text-align: left;
+    width: auto;
+    position: absolute;
+    bottom: -4.5rem;
+    font-size: 30px;
+    color: black;
+    height: auto;
+    margin-left: 10rem;
+    /* background-color: rgb(94, 142, 205); */
+    overflow-y: hidden;
+}
+
+.MainProfile1 .profile-container1 .top-seg .UserDetails {
+    text-align: left;
+    width: auto;
+    position: absolute;
+    bottom: -6.5rem;
+    font-size: 1rem;
+    color: black;
+    height: auto;
+    margin-left: 2rem;
+    /* background-color: rgb(94, 142, 205); */
+    overflow-y: hidden;
+}
+
+.MainProfile .profile-container .bottom-seg {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 15rem;
+    background: white;
+}
+
+.MainProfile .profile-container .bottom-seg .right-side {
+    flex: 0.60;
+    height: 100%;
+}
+
+.MainProfile .profile-container .bottom-seg .left-side {
+    flex: 0.40;
+    height: 100%;
+}

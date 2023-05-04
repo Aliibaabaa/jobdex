@@ -1,0 +1,134 @@
+.h-navbar {
+    background-color: #030332;
+    position: fixed !important;
+    z-index: 10;
+    /* margin: 0; */
+    width: 100%;
+    align-items: center;
+}
+
+.navbar {
+    position: fixed !important;
+}
+
+.logo {
+    height: auto;
+    width: 40px;
+    vertical-align: middle;
+    /* margin: 0;
+    padding: 0; */
+    animation: App-logo-spin infinite 20s linear;
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
+}
+
+
+#nav-list {
+    justify-content: space-around;
+    margin: auto 50px;
+}
+
+.navlinkk {
+    padding: 0px;
+    margin: 0 10px;
+}
+
+#nav-list a {
+    color: white;
+    font-size: 15px;
+    letter-spacing: .3px;
+    text-decoration: none;
+    padding: 0 0 5px 20px;
+}
+
+#nav-list a:hover {
+    /* text-transform: uppercase; */
+    /* font-size: 14px;
+    /* background-color: #16415bce; */
+    color: rgba(168, 213, 250, 0.993);
+    border-radius: 3px;
+    padding-bottom: 0px;
+    font-weight: 500;
+    border-bottom: 2px solid #5997bd;
+    transform: scale(1.1);
+    padding: 0px 10px 0 10px;
+}
+
+#nav-list a:active {
+    font-size: 14px;
+    text-transform: uppercase;
+    background-color: #16415bce;
+    border-radius: 3px;
+    padding: 3px 10px 0px 10px;
+    font-weight: 500;
+    border-bottom: 2px solid #5997bd;
+}
+
+#signinbtn {
+    margin: 0 0 5px 10px;
+    font-size: 13px;
+    letter-spacing: .3px;
+    text-decoration: none;
+    /* color:#030332;
+    background-color: antiquewhite; */
+}
+
+#signinbtn a {
+    text-decoration: none;
+    color: #4f4f4f;
+    font-weight: 500;
+}
+
+#signinbtn a:hover {
+    color: white !important;
+}
+
+#signinbtn:hover {
+    text-transform: uppercase;
+    background-color: #285977ce;
+    border-radius: 5px;
+    font-weight: 500;
+    color: white !important;
+    border-color: #285977ce;
+}
+
+#employersBtn {
+    margin: 0 0 5px 10px;
+    font-size: 13px;
+    letter-spacing: .3px;
+    text-decoration: none;
+    color: white;
+    background-color: transparent;
+    border: 1px solid white;
+}
+
+#employersBtn:hover {
+    text-transform: uppercase;
+    background-color: #fff5c9;
+    border-radius: 5px;
+    /* padding: 5px; */
+    font-weight: 600;
+    color: #113146ce !important;
+    border-color: #285977ce;
+}
+
+.navbar-toggler,
+.navbar-toggler-icon {
+    color: #030332 !important;
+    border-color: white !important;
+    background-color: white !important;
+}

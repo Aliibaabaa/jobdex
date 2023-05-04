@@ -1,0 +1,64 @@
+.joblist {
+    margin-bottom: 20px;
+    /* border: 2px solid red; */
+    position: absolute
+}
+
+.jobsearch {
+    margin: 30px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* border: 2px solid blue; */
+}
+
+.wrapper {
+    height: 100vh;
+}
+
+.list-group-item-action:focus,
+.list-group-item-action:hover {
+    background-color: #f5f5f5;
+    border-color: #f5f5f5;
+}
+
+.jobname {
+    /* border: 2px solid green; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.jobname button {
+    margin: 3px 3px 8px 3px;
+    background-color: transparent;
+    border: 1px solid rgba(207, 207, 207, 0.61);
+    color: black;
+}
+
+.jobdesc {
+    border-style: solid solid none solid;
+    border-width: 1px;
+    border-radius: 4px;
+    border-color: rgba(128, 128, 128, 0.445);
+    padding: 15px;
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+.buttons Button {
+    margin: 0 10px;
+    float: right;
+    text-align: right;
+}
+
+p.job-pos {
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+li {
+    font-size: 12px;
+}

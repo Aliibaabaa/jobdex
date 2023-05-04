@@ -1,0 +1,27 @@
+.Main-Feeds-Cont {
+    height: 100%;
+    width: 80%;
+    margin: 2rem 2rem;
+    /* padding: 1rem; */
+    box-shadow: 1rem 1rem 2rem 1rem lightgray;
+    border-radius: 0.5rem;
+    background: var(--main-color);
+    border-radius: 0.5rem;
+}
+
+
+.Main-Feeds-Cont .bottom-cont {
+    height: 100%;
+    width: 100%;
+}
+
+.Main-Feeds-Cont .bottom-cont h3 {
+    text-align: left;
+    margin-left: 2rem;
+}
+
+.Main-Feeds-Cont .bottom-cont #Abt {
+    text-align: left;
+    margin-left: 2rem;
+    font-size: 1.7rem;
+}

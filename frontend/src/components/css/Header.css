@@ -1,0 +1,31 @@
+* {
+    font-size: 14px;
+}
+
+.css-1tm81ay {
+    /* border: 2px solid yellowgreen; */
+    width: 300px;
+    font-size: 14px;
+    padding: 6px !important;
+}
+
+.css-1h51icj-MuiAutocomplete-root .MuiOutlinedInput-root {
+    margin-top: 4px;
+    padding: 7px !important;
+    width: 300px;
+    font-size: 14px;
+    /* border: 2px solid yellow; */
+}
+
+.css-1h51icj-MuiAutocomplete-root .MuiOutlinedInput-root .MuiAutocomplete-input {
+    padding: 4px 2px 4px 2px !important;
+}
+
+.css-nxo287-MuiInputBase-input-MuiOutlinedInput-input {
+    font-size: 14px !important;
+    /* border: 2px solid brown !important; */
+}
+
+.css-wb57ya-MuiFormControl-root-MuiTextField-root {
+    vertical-align: middle !important;
+}
