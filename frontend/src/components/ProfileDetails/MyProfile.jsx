@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../css/MyProfile.css';
 import '../css/myprofile-sidebar.css';
 import {
-    FaStickyNote,
+    FaLightbulb,
     FaBars,
     FaBriefcase,
     FaGraduationCap,
@@ -19,6 +19,8 @@ import WorkExp from './WorkExp';
 import RightDetails from './RightDetails';
 import UploadResume from './UploadResume';
 import Footer from '../Footer';
+import Skills from './Skills';
+// import { SkillsContext } from './SkillsContext';
 
 const MyProfile = ({ children }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -42,7 +44,7 @@ const MyProfile = ({ children }) => {
         {
             path: "/skills",
             name: "Skills and Expertise",
-            icon: < FaStickyNote />
+            icon: < FaLightbulb />
         },
         {
             path: "/addinfo",
@@ -70,6 +72,7 @@ const MyProfile = ({ children }) => {
                             </div>
                             <div className="UserName">
                                 Ahmed Muhammad Kaur
+
                             </div>
                             {/* <div className="UserDetails">
                             Web Developer
@@ -103,6 +106,7 @@ const MyProfile = ({ children }) => {
                                 <Education />
                                 <AddInfo />
                                 <UploadResume />
+                                {/* <Skills /> */}
                             </div>
                         </div>
                     </div>
@@ -128,6 +132,7 @@ const MyProfile = ({ children }) => {
 
 
                 <div className="main1">{children}</div>
+
 
             </div>
         </>
