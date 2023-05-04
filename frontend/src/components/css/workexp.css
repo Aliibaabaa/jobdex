@@ -1,0 +1,147 @@
+:root {
+    --main-color: hsl(213, 20%, 89%);
+}
+
+.Post-Cont {
+    text-align: center;
+    height: 100%;
+    width: 80%;
+    margin: 6rem 0rem 0rem 5rem;
+    padding: 1rem;
+    box-shadow: 0rem 0rem 1rem 0rem lightgray;
+    border-radius: 0.5rem;
+    background: hsl(213, 20%, 89%);
+}
+
+.Post-Cont .headPortion {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.Post-Cont .headPortion .user-info-portion {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.Post-Cont .headPortion .user-info-portion .user-info {
+    margin-left: 1rem;
+}
+
+.Post-Cont .headPortion .user-info-portion .user-info .userName {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: left;
+}
+
+.Post-Cont .headPortion .post-desc {
+    font-size: 1rem;
+    margin-left: 0.5rem;
+    text-align: justify;
+}
+
+.Post-Cont .headPortion .postCreateDate {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+}
+
+.Post-Cont .bodyPortion {
+    height: 100%;
+    width: 100%;
+    text-align: left;
+}
+
+.Post-Cont .bodyPortion p {
+    text-indent: 20px;
+}
+
+.Post-Cont .hr-post {
+    background-color: lightgray;
+    height: 1px;
+    border: none;
+    width: 90%;
+    margin: auto;
+    margin-top: 0.5rem;
+}
+
+.Post-Cont .footerP {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    align-items: center;
+}
+
+.Post-Cont2 {
+    text-align: center;
+    height: 100%;
+    width: 80%;
+    margin: 2rem 2rem;
+    padding: 1rem;
+    box-shadow: 0rem 0rem 1rem 0rem lightgray;
+    border-radius: 0.5rem;
+    background: var(--main-color);
+}
+
+.Post-Cont2 .headPortion2 {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.Post-Cont2 .headPortion2 .user-info-portion2 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.Post-Cont2 .headPortion2 .user-info-portion2 .user-info2 {
+    margin-left: 1rem;
+}
+
+.Post-Cont2 .headPortion2 .user-info-portion2 .user-info2 .userName2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: left;
+}
+
+.Post-Cont2 .headPortion2 .post-desc2 {
+    font-size: 1rem;
+    margin-left: 0.5rem;
+    text-align: left;
+}
+
+.Post-Cont2 .headPortion2 .postCreateDate2 {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+}
+
+.Post-Cont2 .bodyPortion2 {
+    text-align: left;
+    height: 100%;
+    width: 100%;
+}
+
+.Post-Cont2 .bodyPortion2 h1 {
+    font-size: 1.2rem;
+}
+
+.Post-Cont2 .hr-post2 {
+    background-color: rgb(254, 250, 250);
+    height: 1px;
+    border: none;
+    width: 90%;
+    margin: auto;
+    margin-top: 0.5rem;
+    color: rgb(240, 238, 238);
+}
+
+.Post-Cont2 .footerP2 {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    align-items: center;
+}
