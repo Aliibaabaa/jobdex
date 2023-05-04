@@ -1,4 +1,4 @@
-###### Copyright (c) 2023 Gabriel Mania and Princess Alyzon Nueles. All rights reserved.
+### Copyright (c) 2023 Gabriel Mania and Princess Alyzon Nueles. All rights reserved.
  
 **This code is licensed under the MIT license. See the LICENSE file at https://mit-license.org/**
 
