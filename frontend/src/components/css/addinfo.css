@@ -21,7 +21,7 @@
 
 .Userinfo-main-cont .info-container h6 {
     font-size: 1rem;
-    color: darkturquoise;
+    color: rgb(14, 188, 190);
 }
 
 .Userinfo-main-cont .info-container h5 {
@@ -105,4 +105,25 @@ ul {
     .col-12 {
         width: 100%;
     }
+}
+
+.upload-btn button {
+    padding: 8px;
+    font-size: 13px;
+    letter-spacing: .5px;
+    text-decoration: none;
+    color: #4f4f4f;
+    border: 1px solid #285977ce;
+    background-color: #fcf8e7;
+    border-radius: 50px;
+    margin: 5px 5px
+}
+
+.upload-btn:hover {
+    text-transform: uppercase;
+    background-color: #285977ce;
+    /* border-radius: 5px; */
+    /* padding: 5px; */
+    font-weight: 600;
+    color: #fff5c9 !important;
 }

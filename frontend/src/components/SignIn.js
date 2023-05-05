@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -10,50 +11,266 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import IconButton from '@mui/material/IconButton';
-import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
-import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { Link as Router } from "react-router-dom";
 import '../components/css/signin.css';
 import { Container } from 'react-bootstrap';
 import logoo1 from './images/sample-logo.png';
 import Image from 'react-bootstrap/Image';
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
 
-// function Copyright(props) {
-//     return (
-//         <Typography variant="body2" color="text.secondary" align="center" {...props}>
-//             {'Copyright © '}
-//             <Link color="inherit" href="#">
-//                 YT Proj
-//             </Link>{' '}
-//             {new Date().getFullYear()}
-//             {'.'}
-//         </Typography>
-//     );
-// }
+import Web3 from 'web3';
 
 const theme = createTheme();
 
 function SignIn() {
-    const [showPassword, setShowPassword] = React.useState(false);
 
-    const handleClickShowPassword = () => setShowPassword((show) => !show);
+    // Define the state variables for the user inputs
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [userType, setUserType] = useState('JobSeeker');
 
-    const handleMouseDownPassword = (event) => {
-        event.preventDefault();
+    // Define the Ethereum provider object
+    let provider;
+    if (window.ethereum) {
+        provider = new Web3(window.ethereum);
+    } else if (window.web3) {
+        provider = new Web3(window.web3.currentProvider);
+    } else {
+        alert('No web3 provider detected');
+        return null;
     }
-    const handleSubmit = (event) => {
+
+    // Define the UserRegistry contract ABI
+    const abi = [
+        {
+            "inputs": [
+                {
+                    "internalType": "enum UserRegistry.UserType",
+                    "name": "_userType",
+                    "type": "uint8"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_name",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_email",
+                    "type": "string"
+                }
+            ],
+            "name": "registerUser",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "uint256",
+                    "name": "userId",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "enum UserRegistry.UserType",
+                    "name": "userType",
+                    "type": "uint8"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "string",
+                    "name": "name",
+                    "type": "string"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "string",
+                    "name": "email",
+                    "type": "string"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "address",
+                    "name": "wallet",
+                    "type": "address"
+                }
+            ],
+            "name": "UserRegistered",
+            "type": "event"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_wallet",
+                    "type": "address"
+                }
+            ],
+            "name": "getUserByAddress",
+            "outputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "uint256",
+                            "name": "id",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "enum UserRegistry.UserType",
+                            "name": "userType",
+                            "type": "uint8"
+                        },
+                        {
+                            "internalType": "string",
+                            "name": "name",
+                            "type": "string"
+                        },
+                        {
+                            "internalType": "string",
+                            "name": "email",
+                            "type": "string"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "wallet",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "isRegistered",
+                            "type": "bool"
+                        }
+                    ],
+                    "internalType": "struct UserRegistry.User",
+                    "name": "",
+                    "type": "tuple"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "_userId",
+                    "type": "uint256"
+                }
+            ],
+            "name": "getUserById",
+            "outputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "uint256",
+                            "name": "id",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "enum UserRegistry.UserType",
+                            "name": "userType",
+                            "type": "uint8"
+                        },
+                        {
+                            "internalType": "string",
+                            "name": "name",
+                            "type": "string"
+                        },
+                        {
+                            "internalType": "string",
+                            "name": "email",
+                            "type": "string"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "wallet",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "isRegistered",
+                            "type": "bool"
+                        }
+                    ],
+                    "internalType": "struct UserRegistry.User",
+                    "name": "",
+                    "type": "tuple"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_wallet",
+                    "type": "address"
+                }
+            ],
+            "name": "isUserRegistered",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        }
+    ];
+
+    // Define the UserRegistry contract object
+    const contractAddress = '0xd8b934580fcE35a11B58C6D73aDeE468a2833fa8';
+    const contract = new provider.eth.Contract(abi, contractAddress);
+
+    // Define the function to handle the form submission
+    async function handleSubmit(event) {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
-    };
+
+        try {
+            // Call the registerUser function on the contract
+            const tx = await contract.registerUser(userType, name, email);
+            await tx.wait();
+
+            // Display a success message
+            alert('User registered successfully!');
+        } catch (error) {
+            // Display an error message
+            alert(error.message);
+        }
+    }
+
+
+    // const [showPassword, setShowPassword] = React.useState(false);
+
+    // const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+    // const handleMouseDownPassword = (event) => {
+    //     event.preventDefault();
+    // }
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     const data = new FormData(event.currentTarget);
+    //     console.log({
+    //         email: data.get('email'),
+    //         password: data.get('password'),
+    //     });
+    // };
+
+    // const [userTypee, setUserTypee] = useState('');
+
+    // const handleChange = (event) => {
+    //     setUserTypee(event.target.value);
+    // };
 
     return (
         <Container className="signIn">
@@ -64,13 +281,13 @@ function SignIn() {
                         item
                         xs={false}
                         sm={3}
-                        md={6}
+                        md={7}
                         sx={{
                             backgroundColor: (t) =>
                                 t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
                         }}
                     />
-                    <Grid item xs={12} sm={9} md={6} component={Paper} elevation={6} square className="LogArea">
+                    <Grid item xs={12} sm={9} md={5} component={Paper} elevation={6} square className="LogArea">
                         <Box className="LogArea2"
                             sx={{
                                 my: 8,
@@ -83,10 +300,24 @@ function SignIn() {
 
                             <Image className="logoo" src={logoo1} responsive />
 
-                            <Typography component="h1" variant="h5" className="Welc-header">
+                            <Typography component="h1" variant="h5" className="headerr">
                                 Welcome!
                             </Typography>
                             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }} className="inputfield">
+                                <TextField
+                                    // margin="auto"
+                                    required
+                                    //fullWidth
+                                    id="fullName"
+                                    label="Full Name"
+                                    name="fullName"
+                                    autoComplete="fullName"
+                                    autoFocus
+                                    className='fName'
+
+                                    value={name}
+                                    onChange={(event) => setName(event.target.value)}
+                                />
                                 <TextField
                                     // margin="auto"
                                     required
@@ -96,8 +327,12 @@ function SignIn() {
                                     name="email"
                                     autoComplete="email"
                                     autoFocus
+                                    className='emailadd'
+
+                                    value={email}
+                                    onChange={(event) => setEmail(event.target.value)}
                                 />
-                                <FormControl sx={{ m: 1, width: '50ch' }} variant="outlined">
+                                {/* <FormControl sx={{ m: 1, width: '50ch' }} variant="outlined">
                                     <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
                                     <OutlinedInput
                                         id="outlined-adornment-password"
@@ -116,32 +351,51 @@ function SignIn() {
                                         }
                                         label="Password"
                                     />
+                                </FormControl> */}
+                                <FormControl fullWidth>
+                                    <InputLabel id="usertype-label">
+                                        User Type</InputLabel>
+                                    <Select
+                                        labelId="usertype-label"
+                                        id="usertype"
+                                        // value={userTypee}
+                                        label="User Type"
+                                        // onChange={handleChange}
+                                        className='usertype-f'
+
+                                        value={userType}
+                                        onChange={(event) => setUserType(event.target.value)}
+                                    >
+                                        <option value="JobSeeker">Job Seeker</option>
+                                        <option value="Employer">Employer</option>
+                                    </Select>
                                 </FormControl>
-                                <FormControlLabel
+                                {/* <FormControlLabel
                                     control={<Checkbox value="remember" color="primary" />}
                                     label="Remember me"
-                                />
+                                /> */}
 
-                                <Router to="/myprofile">
-                                    <Button
-                                        type="submit"
-                                        fullWidth
-                                        variant="contained"
-                                        sx={{ mt: 3, mb: 2 }}
-                                    >
-                                        Sign In
-                                    </Button>
-                                </Router>
+
+                                <Button
+                                    type="submit"
+                                    fullWidth
+                                    variant="contained"
+                                    sx={{ mt: 3, mb: 2 }}
+                                >
+                                    Sign In
+                                </Button>
+
 
                                 <Grid container>
-                                    <Grid item xs>
-                                        <Link href="#" variant="body2">
+                                    {/* <Grid item xs>
+                                        <Link href="#" variant="body3">
                                             Forgot password?
                                         </Link>
-                                    </Grid>
+                                    </Grid> */}
+
                                     <Grid item>
-                                        <Link href="/newuser" variant="body2">
-                                            {"Don't have an account? Sign Up"}
+                                        <Link href="/signup" variant="body3">
+                                            {"Don't have an account? SIGN UP"}
                                         </Link>
                                     </Grid>
                                 </Grid>
@@ -155,4 +409,4 @@ function SignIn() {
     );
 }
 
-export default SignIn
+export default SignIn;

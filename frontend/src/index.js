@@ -7,11 +7,13 @@ import { BrowserRouter, Routes, Route, } from "react-router-dom";
 
 //MDBootstrap
 import 'mdb-react-ui-kit/dist/css/mdb.min.css'
+import SignIn from './components/SignIn';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <App />
+    {/* <SignIn /> */}
   </BrowserRouter>
 );
 

@@ -3,6 +3,7 @@ import '../css/workexp.css'
 
 const WorkExp = () => {
     return (
+        
         <div className='Post-Cont'>
             <div className="headPortion">
                 <div className="user-info-portion">

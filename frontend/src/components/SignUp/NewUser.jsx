@@ -5,6 +5,7 @@ import NewUserProfile from './NewUserProfile';
 
 function NewUser() {
     const [step, setStep] = useState(1);
+    const [fullName, setFullName] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -29,29 +30,14 @@ function NewUser() {
         setStep(step - 1);
     };
 
-    // const handleSubmit = () => {
-    //     const formData = {
-    //         firstName,
-    //         lastName,
-    //         email,
-    //         password,
-    //         address,
-    //         specialization,
-    //         country,
-    //         nationality,
-    //         skills,
-    //         profilePic,
-    //     };
-
-    //     console.log(formData);
-    // };
-
     switch (step) {
         case 1:
             return (
                 <PersonalDetails
                     onNext={handleNext}
                     onBack={handleBack}
+                    fullName={fullName}
+                    setFullName={setFullName}
                     firstName={firstName}
                     setFirstName={setFirstName}
                     lastName={lastName}
@@ -99,6 +85,8 @@ function NewUser() {
             return (
                 <NewUserProfile
                     onPrevious={handleBack}
+                    fullName={fullName}
+                    setFullName={setFullName}
                     firstName={firstName}
                     lastName={lastName}
                     email={email}
@@ -108,6 +96,14 @@ function NewUser() {
                     country={country}
                     nationality={nationality}
                     skills={skills}
+                    position={position}
+                    setPosition={setPosition}
+                    company={company}
+                    setCompany={setCompany}
+                    startDate={startDate}
+                    setStartDate={setStartDate}
+                    endDate={endDate}
+                    setEndDate={setEndDate}
                     profilePic={profilePic}
                     setProfilePic={setProfilePic}
                     resume={resume}
