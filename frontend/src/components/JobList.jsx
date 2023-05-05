@@ -21,8 +21,8 @@
 
 // function JobList() {
 //     const [selectedItem, setSelectedItem] = useState(null);
-//     const [showModal, setShowModal] = useState(false);
-//     const [isSmallScreen, setIsSmallScreen] = useState(false);
+// const [showModal, setShowModal] = useState(false);
+// const [isSmallScreen, setIsSmallScreen] = useState(false);
 
 //     useEffect(() => {
 //         setIsSmallScreen(window.innerWidth < 750);
@@ -35,15 +35,15 @@
 //         };
 //     }, []);
 
-//     const handleItemClick = (item) => {
-//         setSelectedItem({
-//             ...item,
-//             details: JobDetails[item.id - 1],
-//         });
-//         if (isSmallScreen) {
-//             setShowModal(true);
-//         }
-//     };
+// const handleItemClick = (item) => {
+//     setSelectedItem({
+//         ...item,
+//         details: JobDetails[item.id - 1],
+//     });
+//     if (isSmallScreen) {
+//         setShowModal(true);
+//     }
+// };
 
 //     const handleCloseModal = () => {
 //         setSelectedItem(null);
@@ -52,74 +52,74 @@
 
 //     return (
 //         <div>
-//             <Container>
-//                 <Row xs={2} md={2}>
-//                     <Col xs={12} lg={4} >
-//                         <div className="jobname flex-column">
-//                             {items.map((item) => (
-//                                 <Button key={item.id} onClick={() => handleItemClick(item)}>
-//                                     {item.name} {item.companyname}
-//                                 </Button>
-//                             ))}
+// <Container>
+//     <Row xs={2} md={2}>
+//         <Col xs={12} lg={4} >
+//             <div className="jobname flex-column">
+//                 {items.map((item) => (
+//                     <Button key={item.id} onClick={() => handleItemClick(item)}>
+//                         {item.name} {item.companyname}
+//                     </Button>
+//                 ))}
+//             </div>
+
+//         </Col>
+//         <Col lg={8}>
+//             <div className="jobdesc " >
+//                 {selectedItem && !isSmallScreen && (
+//                     <div style={{ width: '100%' }}>
+//                         <p className='job-pos'>{selectedItem.name}</p>
+//                         <h6>{selectedItem.companyname} </h6>
+
+//                         <div className='buttons'>
+
+//                             <Button> Save Job </Button>
+//                             <Button> Apply Now </Button>
 //                         </div>
-
-//                     </Col>
-//                     <Col lg={8}>
-//                         <div className="jobdesc " >
-//                             {selectedItem && !isSmallScreen && (
-//                                 <div style={{ width: '100%' }}>
-//                                     <p className='job-pos'>{selectedItem.name}</p>
-//                                     <h6>{selectedItem.companyname} </h6>
-
-//                                     <div className='buttons'>
-
-//                                         <Button> Save Job </Button>
-//                                         <Button> Apply Now </Button>
-//                                     </div>
-//                                     <hr />
-//                                     <ul scrollable>
-//                                         <li>
-//                                             <strong>Job Type: </strong>
-//                                             {selectedItem.details.jobType}
-//                                         </li>
-//                                         <li>
-//                                             <strong>Location: </strong>
-//                                             {selectedItem.details.location}
-//                                         </li>
-//                                         <li>
-//                                             <strong>Salary: </strong>
-//                                             {selectedItem.details.salary}
-//                                         </li>
-//                                         <li>
-//                                             <strong>Qualifications: </strong>
-//                                             <ul dangerouslySetInnerHTML={{ __html: JobDetails[selectedItem.id - 1].qualification }}>
-//                                             </ul>
-//                                         </li>
-//                                         <li>
-//                                             <strong>Job description:</strong>
-//                                             <ul dangerouslySetInnerHTML={{ __html: JobDetails[selectedItem.id - 1].description }}>
-//                                             </ul>
-//                                         </li>
-//                                         <li>
-//                                             <strong>Shift and Schedule: </strong>
-//                                             {selectedItem.details.shiftSchedule}
-//                                         </li>
-//                                         <li>
-//                                             <strong>Company Name: </strong>
-//                                             {selectedItem.details.companyname}
-//                                         </li>
-//                                         <li>
-//                                             <strong>Overview: </strong>
-//                                             {selectedItem.details.overview}
-//                                         </li>
-//                                     </ul>
-//                                     <hr />
-//                                 </div>
-//                             )}
-//                         </div>
-//                     </Col>
-//                 </Row>
-//             </Container>
+//                         <hr />
+//                         <ul scrollable>
+//                             <li>
+//                                 <strong>Job Type: </strong>
+//                                 {selectedItem.details.jobType}
+//                             </li>
+//                             <li>
+//                                 <strong>Location: </strong>
+//                                 {selectedItem.details.location}
+//                             </li>
+//                             <li>
+//                                 <strong>Salary: </strong>
+//                                 {selectedItem.details.salary}
+//                             </li>
+//                             <li>
+//                                 <strong>Qualifications: </strong>
+//                                 <ul dangerouslySetInnerHTML={{ __html: JobDetails[selectedItem.id - 1].qualification }}>
+//                                 </ul>
+//                             </li>
+//                             <li>
+//                                 <strong>Job description:</strong>
+//                                 <ul dangerouslySetInnerHTML={{ __html: JobDetails[selectedItem.id - 1].description }}>
+//                                 </ul>
+//                             </li>
+//                             <li>
+//                                 <strong>Shift and Schedule: </strong>
+//                                 {selectedItem.details.shiftSchedule}
+//                             </li>
+//                             <li>
+//                                 <strong>Company Name: </strong>
+//                                 {selectedItem.details.companyname}
+//                             </li>
+//                             <li>
+//                                 <strong>Overview: </strong>
+//                                 {selectedItem.details.overview}
+//                             </li>
+//                         </ul>
+//                         <hr />
+//                     </div>
+//                 )}
+//             </div>
+//         </Col>
+//     </Row>
+// </Container>
 
 //             <Modal show={showModal} onHide={handleCloseModal} scrollable>
 //                 <Modal.Header closeButton>
@@ -145,9 +145,11 @@
 // }
 // export default JobList;
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from 'react';
+import './css/JobList.css';
+import { Button, Modal, Container, Row, Col } from 'react-bootstrap';
+import JobDetails from './jobDetails/JobDetails';
 import Web3 from "web3";
-import JobDetails from "./jobDetails/JobDetails";
 
 const abi = [
     {
@@ -396,6 +398,23 @@ function JobList() {
     const [jobs, setJobs] = useState(JobDetails);
     const [coverLetter, setCoverLetter] = useState("");
 
+    const [selectedItem, setSelectedItem] = useState(null);
+    const [showModal, setShowModal] = useState(false);
+    const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+    useEffect(() => {
+        setIsSmallScreen(window.innerWidth < 750);
+        const handleResize = () => {
+            setIsSmallScreen(window.innerWidth < 750);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+
+
     async function connectWallet() {
         if (window.ethereum) {
             try {
@@ -423,26 +442,86 @@ function JobList() {
     }
 
     function handleApply(jobId) {
-        submitApplication(jobId);
+        // submitApplication(jobId);
+        submitApplication(selectedItem.id);
     }
 
+    const handleItemClick = (job) => {
+        setSelectedItem({
+            ...job,
+            details: JobDetails[job.id - 1],
+        });
+        if (isSmallScreen) {
+            setShowModal(true);
+        }
+    };
+
     return (
-        <div>
-            <h1>Job List</h1>
-            <button onClick={connectWallet}>Connect Wallet</button>
-            {jobs.map((job) => (
-                <div key={job.id}>
-                    <h4>{job.name}</h4>
-                    <p>{job.description}</p>
-                    <input
-                        type="text"
-                        value={coverLetter}
-                        onChange={(event) => setCoverLetter(event.target.value)}
-                    />
-                    <button onClick={() => handleApply(job.id)}>Apply</button>
-                </div>
-            ))}
-        </div>
+        <>
+            <div>
+                <h1>Job List</h1>
+                <button onClick={connectWallet}>Connect Wallet</button>
+                {/* {jobs.map((job) => (
+                    <div key={job.id}>
+                        <h4>{job.name}</h4>
+                        <p>{job.description}</p>
+                        <input
+                            type="text"
+                            value={coverLetter}
+                            onChange={(event) => setCoverLetter(event.target.value)}
+                        />
+                        <button onClick={() => handleApply(job.id)}>Apply</button> */}
+
+                <Container>
+                    <Row xs={2} md={2}>
+                        <Col xs={12} lg={4} >
+                            <div className="jobname flex-column">
+                                {jobs.map((jobs) => (
+                                    <Button key={jobs.id} onClick={() => handleItemClick(jobs)}>
+                                        {jobs.name} {jobs.companyname}
+                                    </Button>
+                                ))}
+                            </div>
+
+                        </Col>
+                        <Col lg={8}>
+                            <div className="jobdesc " >
+
+                                {selectedItem && !isSmallScreen && (
+                                    <div style={{ width: '100%' }}>
+
+                                        <p className='job-pos'>{selectedItem.name}</p>
+                                        <h6>{selectedItem.companyname} </h6>
+                                        {/* {jobs.map((jobs) => ( ))} */}
+                                        <div className='buttons'>
+
+                                            <Button> Save Job </Button>
+                                            <Button onClick={() => handleApply}> Apply Now </Button>
+
+                                        </div>
+                                        <hr />
+                                        <ul scrollable>
+
+                                            <li>
+                                                <strong>Job description:</strong>
+                                                <ul dangerouslySetInnerHTML={{ __html: JobDetails[selectedItem.id - 1].description }}>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                        <hr />
+
+                                    </div>
+                                )}
+
+                            </div>
+                        </Col>
+                    </Row>
+                </Container>
+
+
+            </div >
+        </>
+
     );
 }
 
