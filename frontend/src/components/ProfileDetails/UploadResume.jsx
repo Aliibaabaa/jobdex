@@ -37,7 +37,7 @@ function UploadResume() {
                             onChange={handleFileChange}
                         />
                         {showSaveButton && (
-                            <button onClick={handleSaveClick}>Save File</button>
+                            <button className='upload-btn' onClick={handleSaveClick}>Save File</button>
                         )}
                         {selectedFile && (
                             <div>

@@ -29,7 +29,7 @@ function Navbarr() {
             {/* <Link to="/" className='navlinkk'>Home</Link> */}
             <Link to="/joblist" className='navlinkk'>Job Search</Link>
             {/* <Link to="/myprofile" className='navlinkk'>My Profile</Link> */}
-            <Link to="/company-reviews" className='navlinkk'>Company Reviews</Link>
+            <Link to="#" className='navlinkk'>Company Reviews</Link>
           </Nav>
 
           <Nav>
@@ -43,7 +43,7 @@ function Navbarr() {
               <i class="fa fa-user"></i> Sign in
             </Button>
 
-            <Link to="/signup">
+            <Link to="#">
               <Button variant="light" className='employersBtn' id='employersBtn' >
                 <i class="fas fa-address-book"></i> For Employers
               </Button>

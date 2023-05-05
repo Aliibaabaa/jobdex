@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import Navbarr from './components/Navbarr';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Hero from './components/Hero';
 import JobList from './components/JobList';
 import CompReviews from './components/CompReviews';
@@ -16,6 +16,7 @@ import MyProfile from './components/ProfileDetails/MyProfile';
 import WorkExperience from './components/ProfileDetails/WorkExp';
 import UploadResume from './components/ProfileDetails/UploadResume';
 import Skills from './components/ProfileDetails/Skills';
+import Home from './components/Home';
 // import { SkillsContext } from './components/ProfileDetails/SkillsContext';
 
 function App() {
@@ -37,6 +38,10 @@ function App() {
       <hr />
       <main>
         {/* <Home /> */}
+        <Routes>
+          <Route path="/" element={<SignIn />} />
+          <Route path="/home" element={<Home />} />
+        </Routes>
 
         <Routes>
           {/* <Route path="/" element={<Home />} /> */}

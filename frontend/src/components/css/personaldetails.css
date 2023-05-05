@@ -1,0 +1,114 @@
+.wrapper-pd {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px auto -20px auto;
+    /* border: 1px solid black; */
+    height: 100%;
+    width: 100vw
+}
+
+.header1 {
+    font-size: 40px;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 2px;
+    color: #030b30;
+    -webkit-text-stroke: 0.1pt #8659397a;
+    text-shadow: 3px 3px 3px #0a0a0a55;
+    text-transform: uppercase;
+    font-family: 'Poppins';
+    margin: 30px
+}
+
+.wrapper2-pd div {
+    margin: auto;
+    margin-bottom: 8px;
+}
+
+.wrapper2-pd input {
+    margin-left: 5px;
+    width: 100%;
+    padding: 3px;
+    border: 1px solid rgb(138, 138, 138);
+    border-radius: 3px;
+}
+
+.signup-btn,
+.signup-btn2 {
+    padding: 8px;
+    font-size: 13px;
+    letter-spacing: .5px;
+    text-decoration: none;
+    color: #4f4f4f;
+    border: 1px solid #285977ce;
+    background-color: #fcf8e7;
+    border-radius: 50px;
+    margin: 5px 5px
+}
+
+.signup-btn:hover {
+    text-transform: uppercase;
+    background-color: #285977ce;
+    /* border-radius: 5px; */
+    /* padding: 5px; */
+    font-weight: 600;
+    color: #fff5c9 !important;
+}
+
+.signup-btn2:hover {
+    text-transform: uppercase;
+    background-color: #007e34ce;
+    /* border-radius: 5px; */
+    /* padding: 5px; */
+    font-weight: 600;
+    color: white !important;
+}
+
+.divbtn {
+    display: flex;
+    justify-content: center;
+}
+
+
+.header2 {
+    font-size: 25px;
+    font-weight: 500;
+    font-style: italic;
+    text-align: center;
+    letter-spacing: 2px;
+    color: #030b30;
+    -webkit-text-stroke: 0.1pt #8659397a;
+    text-shadow: 3px 3px 3px #0a0a0a55;
+    font-family: 'Poppins';
+    /* margin: 30px */
+}
+
+.wrapper2 img,
+.wrapper2-img {
+    /* margin: 10px 10px; */
+    border-radius: 100px;
+    border: 3px outset #03033234;
+    height:150px;
+    width: 150px !important;
+    display: block;
+    margin: auto;
+}
+
+.wrapper2 {
+    text-align: center;
+    justify-content: center;
+    padding: 5px
+}
+
+.wrapper2 p {
+    margin: auto;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-family: var(--mdb-font-roboto);
+    color: #4f4f4f;
+    line-height: 1.6;
+    margin-left: 20px;
+    text-align: left;
+}

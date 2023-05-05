@@ -71,7 +71,7 @@ const MyProfile = ({ children }) => {
                                 <img id='prf-img' src="https://www.mohenesh.com/wp-content/uploads/2021/11/Doge-meme-2.webp" alt="" srcset="" />
                             </div>
                             <div className="UserName">
-                                Ahmed Muhammad Kaur
+                                Put a Sample Name here
 
                             </div>
                             {/* <div className="UserDetails">
