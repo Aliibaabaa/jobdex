@@ -1,116 +1,49 @@
-Hello and welcome to this video where we will be discussing a smart contract code 
-for a Job Listing application. This smart contract is written in Solidity, which 
-is a programming language used to develop smart contracts on the Ethereum blockchain.
+Hello and welcome to this video where we will be discussing a smart contract code for a Job Listing application. This smart contract is written in Solidity, which is a programming language used to develop smart contracts on the Ethereum blockchain.
 
-The purpose of this Job Listing smart contract is to allow employers to post job 
-listings, update them and remove them, while job seekers can browse the active job 
-listings. The smart contract also interfaces with other contracts such as the 
-Reputation System contract, the Token Management contract and the User Registry 
-contract to provide additional functionality.
+The purpose of this Job Listing smart contract is to allow employers to post job listings, update them and remove them, while job seekers can browse the active job listings. The smart contract also interfaces with other contracts such as the Reputation System contract, the Token Management contract and the User Registry contract to provide additional functionality.
 
-This is a smart contract called JobListing that represents a job listing system. 
-The contract has three instances of other contracts ReputationSystem, TokenManagement, 
-and UserRegistry, which are presumably necessary for the job listing system to 
-function properly.
+This is a smart contract called JobListing that represents a job listing system. The contract has three instances of other contracts ReputationSystem, TokenManagement, and UserRegistry, which are presumably necessary for the job listing system to function properly.
 
-The contract defines a struct called Job, which has several properties including 
-id, employer, title, description, requiredSkills, experience, compensation, and 
-isActive. id is a unique identifier for each job listing, employer is the address 
-of the employer who posted the job, title and description provide information 
-about the job, requiredSkills lists the skills that are required for the job, 
-experience is the minimum level of experience required for the job, compensation 
-is the amount of compensation offered for the job, and isActive is a boolean value 
-that indicates whether the job listing is active or not.
+The contract defines a struct called Job, which has several properties including id, employer, title, description, requiredSkills, experience, compensation, and isActive. id is a unique identifier for each job listing, employer is the address of the employer who posted the job, title and description provide information about the job, requiredSkills lists the skills that are required for the job, experience is the minimum level of experience required for the job, compensation is the amount of compensation offered for the job, and isActive is a boolean value that indicates whether the job listing is active or not.
 
-The contract also defines a private jobCounter variable, which is used to keep 
-track of the total number of job listings. Additionally, it has a private mapping 
-called jobs, which is used to store job listings by their unique identifier.
+The contract also defines a private jobCounter variable, which is used to keep track of the total number of job listings. Additionally, it has a private mapping called jobs, which is used to store job listings by their unique identifier.
 
-The contract has three events that are emitted when certain actions are performed: 
-JobPosted, JobUpdated, and JobRemoved. JobPosted is emitted when a new job listing 
-is posted, JobUpdated is emitted when a job listing is updated, and JobRemoved 
-is emitted when a job listing is removed.
+The contract has three events that are emitted when certain actions are performed: JobPosted, JobUpdated, and JobRemoved. JobPosted is emitted when a new job listing is posted, JobUpdated is emitted when a job listing is updated, and JobRemoved is emitted when a job listing is removed.
 
-The contract includes three instances of other contracts, ReputationSystem, 
-TokenManagement, and UserRegistry, which are passed as parameters to the constructor.
+The contract includes three instances of other contracts, ReputationSystem, TokenManagement, and UserRegistry, which are passed as parameters to the constructor.
 
-The first function in the contract is called "postJob" and it enables users to 
-post a new job listing. The function takes as parameters the job title, description, 
-required skills, experience level, and compensation. It creates a new Job struct, 
-assigns it a unique identifier, sets the employer's address to the sender's address,
-and sets the job status to active. The new job listing is then stored in the jobs 
-mapping and the JobPosted event is emitted.
+The first function in the contract is called "postJob" and it enables users to post a new job listing. The function takes as parameters the job title, description, required skills, experience level, and compensation. It creates a new Job struct, assigns it a unique identifier, sets the employer's address to the sender's address, and sets the job status to active. The new job listing is then stored in the jobs mapping and the JobPosted event is emitted.
 
-The second function in the contract is called "updateJob" and it enables employers 
-to update an existing job listing. The function takes as parameters the job identifier, 
-job title, description, required skills, experience level, and compensation. 
-It ensures that only the employer who posted the job can update it and that the 
-job is still active. It then updates the job listing with the new details and 
-emits the JobUpdated event.
+The second function in the contract is called "updateJob" and it enables employers to update an existing job listing. The function takes as parameters the job identifier, job title, description, required skills, experience level, and compensation. It ensures that only the employer who posted the job can update it and that the job is still active. It then updates the job listing with the new details and emits the JobUpdated event.
 
-The third function in the contract is called "removeJob" and it enables employers 
-to remove an existing job listing. The function takes as a parameter the job identifier. 
-It ensures that only the employer who posted the job can remove it and that the 
-job is still active. It then sets the job status to inactive and emits the 
-JobRemoved event.
+The third function in the contract is called "removeJob" and it enables employers to remove an existing job listing. The function takes as a parameter the job identifier. It ensures that only the employer who posted the job can remove it and that the job is still active. It then sets the job status to inactive and emits the JobRemoved event.
 
-The getJob function is a read-only function that allows anyone to retrieve a 
-specific job listing by its ID. The function takes in a single parameter _jobId, 
-which is the ID of the job listing to retrieve.
+The getJob function is a read-only function that allows anyone to retrieve a specific job listing by its ID. The function takes in a single parameter _jobId, which is the ID of the job listing to retrieve.
 
-The function returns a Job struct, which is defined in the smart contract and 
-contains information about the job listing, such as the employer's address, the 
-job title, description, required skills, experience level, compensation, and 
-whether the job is active or not.
+The function returns a Job struct, which is defined in the smart contract and contains information about the job listing, such as the employer's address, the job title, description, required skills, experience level, compensation, and whether the job is active or not.
 
-The memory keyword indicates that the function will return a copy of the Job 
-struct instead of a reference to the original struct. This means that the function 
-will not modify the state of the smart contract.
+The memory keyword indicates that the function will return a copy of the Job struct instead of a reference to the original struct. This means that the function will not modify the state of the smart contract.
 
-This smart contract code defines a function named getAllJobs() that retrieves 
-all the active job listings. The function returns an array of Job structs.
+This smart contract code defines a function named getAllJobs() that retrieves all the active job listings. The function returns an array of Job structs.
 
-First, the function iterates through the jobs mapping and counts the number of 
-active jobs. This is done by iterating over all the job listings stored in the 
-mapping and checking if the isActive boolean flag is set to true.
+First, the function iterates through the jobs mapping and counts the number of active jobs. This is done by iterating over all the job listings stored in the mapping and checking if the isActive boolean flag is set to true.
 
-After counting the active jobs, the function creates an array of Job structs with
-a length equal to the number of active jobs. The Job structs will be added to this 
-array in the next step.
+After counting the active jobs, the function creates an array of Job structs with a length equal to the number of active jobs. The Job structs will be added to this array in the next step.
 
-The function then iterates over the jobs mapping again to add each active job to 
-the array. For each active job, its Job struct is added to the array at the next 
-index position. The index variable is used to keep track of the next available 
-index position.
+The function then iterates over the jobs mapping again to add each active job to the array. For each active job, its Job struct is added to the array at the next index position. The index variable is used to keep track of the next available index position.
 
 Finally, the function returns the array of active Job structs.
 
-This smart contract code defines a function called completeJob that allows an 
-employer to mark a job as completed, transfer payment to the job seeker, and leave 
-a review for the job seeker. Here is a detailed explanation of the function:
+This smart contract code defines a function called completeJob that allows an employer to mark a job as completed, transfer payment to the job seeker, and leave a review for the job seeker. Here is a detailed explanation of the function:
 
-The function takes three parameters: the ID of the job to be completed, the rating 
-for the job seeker's performance, and the comment for the job seeker's review.
+The function takes three parameters: the ID of the job to be completed, the rating for the job seeker's performance, and the comment for the job seeker's review.
 
-The function retrieves information about the job, job seeker, and employer from 
-the jobs mapping and the UserRegistry contract. The getJob function is called to 
-retrieve the job details using the provided jobId. Then, the getUserById and 
-getUserByAddress functions of the UserRegistry contract are called to get the 
-user details of the job seeker and employer.
+The function retrieves information about the job, job seeker, and employer from the jobs mapping and the UserRegistry contract. The getJob function is called to retrieve the job details using the provided jobId. Then, the getUserById and getUserByAddress functions of the UserRegistry contract are called to get the user details of the job seeker and employer.
 
-These require statements check whether the job is still active, whether the caller 
-is an employer, and whether the job is assigned to a job seeker. If any of these 
-conditions is not met, the function will throw an exception and the transaction 
-will be reverted.
+These require statements check whether the job is still active, whether the caller is an employer, and whether the job is assigned to a job seeker. If any of these conditions is not met, the function will throw an exception and the transaction will be reverted.
 
-This line transfers the amount of tokens that the job seeker is owed as compensation 
-from the employer's wallet to the job seeker's wallet using the transferFrom function 
-of the TokenManagement contract. This function moves tokens from the from address 
-to the to address.
+This line transfers the amount of tokens that the job seeker is owed as compensation from the employer's wallet to the job seeker's wallet using the transferFrom function of the TokenManagement contract. This function moves tokens from the from address to the to address.
 
-This line calls the submitReview function of the ReputationSystem contract to 
-submit a review for the job seeker. The submitReview function takes four parameters: 
-the ID of the user being reviewed, the type of review, the rating, and the comment.
+This line calls the submitReview function of the ReputationSystem contract to submit a review for the job seeker. The submitReview function takes four parameters: the ID of the user being reviewed, the type of review, the rating, and the comment.
 
-Finally, this line sets the isActive flag of the job to false, indicating that it 
-has been completed and is no longer active.
+Finally, this line sets the isActive flag of the job to false, indicating that it has been completed and is no longer active.
