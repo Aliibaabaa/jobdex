@@ -26,8 +26,8 @@ function App() {
       </nav>
 
       <br /> <br />
-
       <hr />
+
       <main>
         <Routes>
           <Route path="/" element={<SignIn />} />
