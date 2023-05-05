@@ -1,71 +1,33 @@
-Hey everyone, in this video we're going to take a look at a smart contract written 
-in Solidity called JobApplication. This contract is designed to handle job applications 
-submitted by users on a blockchain network.
+Hey everyone, in this video we're going to take a look at a smart contract written in Solidity called JobApplication. This contract is designed to handle job applications submitted by users on a blockchain network.
 
-Let's start by looking at the variables defined in the contract. There are several 
-private mappings that store application data: 
+Let's start by looking at the variables defined in the contract. There are several private mappings that store application data: 
 
 - The `applications` mapping is used to store applications by their unique identifier
 - The `jobApplications` mapping is used to store applications associated with a specific job
 - The `userApplications` mapping is used to store applications submitted by a specific user
 
-There's also a private counter variable called `applicationCounter` that keeps track 
-of the total number of applications.
+There's also a private counter variable called `applicationCounter` that keeps track of the total number of applications.
 
 Now let's take a closer look at the functions in this contract.
 
-The `submitApplication` function allows users to submit a new job application. It 
-takes in two parameters: `uint _jobId` which is the ID of the job the user is applying 
-for, and `string memory _coverLetter` which is the cover letter submitted by the user. 
+The `submitApplication` function allows users to submit a new job application. It takes in two parameters: `uint _jobId` which is the ID of the job the user is applying for, and `string memory _coverLetter` which is the cover letter submitted by the user. 
 
-Inside the function, a new `Application` struct is created with the relevant data, 
-and then stored in the `applications` mapping. The `jobApplications` and `userApplications` 
-mappings are also updated with the new application's ID. Finally, an event called 
-`ApplicationSubmitted` is emitted to notify other nodes on the network that a new 
-application has been submitted.
+Inside the function, a new `Application` struct is created with the relevant data, and then stored in the `applications` mapping. The `jobApplications` and `userApplications` mappings are also updated with the new application's ID. Finally, an event called `ApplicationSubmitted` is emitted to notify other nodes on the network that a new application has been submitted.
 
-The `withdrawApplication` function allows users to withdraw an application they've 
-submitted. It takes in one parameter: `uint _applicationId` which is the ID of the 
-application the user wants to withdraw.
+The `withdrawApplication` function allows users to withdraw an application they've submitted. It takes in one parameter: `uint _applicationId` which is the ID of the application the user wants to withdraw.
 
-Inside the function, the application with the given ID is retrieved from the `applications` 
-mapping. The function then checks that the applicant attempting to withdraw the 
-application is the same as the applicant who originally submitted it. It also checks 
-that the application has not already been withdrawn. If both of these conditions 
-are met, the application's `isWithdrawn` field is set to `true`, and an event called 
-`ApplicationWithdrawn` is emitted to notify other nodes on the network.
+Inside the function, the application with the given ID is retrieved from the `applications` mapping. The function then checks that the applicant attempting to withdraw the application is the same as the applicant who originally submitted it. It also checks that the application has not already been withdrawn. If both of these conditions are met, the application's `isWithdrawn` field is set to `true`, and an event called `ApplicationWithdrawn` is emitted to notify other nodes on the network.
 
-The `getApplication` function allows users to retrieve details about a specific 
-job application. It takes in one parameter: `uint _applicationId` which is the ID 
-of the application the user wants to retrieve.
+The `getApplication` function allows users to retrieve details about a specific job application. It takes in one parameter: `uint _applicationId` which is the ID of the application the user wants to retrieve.
 
-Inside the function, the application with the given ID is retrieved from the `applications`
-mapping and returned to the user.
+Inside the function, the application with the given ID is retrieved from the `applications` mapping and returned to the user.
 
-The `getApplicationsByJob` function allows users to retrieve all job applications 
-associated with a specific job. It takes in one parameter: `uint _jobId` which is 
-the ID of the job the user is interested in.
+The `getApplicationsByJob` function allows users to retrieve all job applications associated with a specific job. It takes in one parameter: `uint _jobId` which is the ID of the job the user is interested in.
 
-Inside the function, the `jobApplications` mapping is used to retrieve an array 
-of application IDs associated with the given job ID. The function then iterates 
-over this array and retrieves each corresponding `Application` struct from the `applications` 
-mapping. Finally, an array of all the retrieved `Application` structs is returned 
-to the user.
+Inside the function, the `jobApplications` mapping is used to retrieve an array of application IDs associated with the given job ID. The function then iterates over this array and retrieves each corresponding `Application` struct from the `applications` mapping. Finally, an array of all the retrieved `Application` structs is returned to the user.
 
-The `getApplicationsByUser` function allows users to retrieve all job applications 
-they've submitted. It takes in one parameter: `address _applicant` which is the 
-address of the user who submitted the applications.
+The `getApplicationsByUser` function allows users to retrieve all job applications they've submitted. It takes in one parameter: `address _applicant` which is the address of the user who submitted the applications.
 
-Inside the function, the `userApplications` mapping is used to retrieve an array 
-of application IDs submitted by the given user. The function then iterates over 
-this array and retrieves each corresponding `Application` struct from the `applications` 
-mapping. Finally, an array of all the retrieved `Application` structs is returned 
-to the user.
+Inside the function, the `userApplications` mapping is used to retrieve an array of application IDs submitted by the given user. The function then iterates over this array and retrieves each corresponding `Application` struct from the `applications` mapping. Finally, an array of all the retrieved `Application` structs is returned to the user.
 
-And that's a quick overview of the JobApplication smart contract! This contract 
-provides a simple and efficient way for users to submit job applications and for 
-employers to manage and track those applications. The contract uses a series of 
-mappings to store applications by their ID, the job they are associated with, 
-and the user who submitted them. It also includes functions for submitting, 
-withdrawing, and retrieving applications, as well as emitting events for each of 
-those actions.
+And that's a quick overview of the JobApplication smart contract! This contract provides a simple and efficient way for users to submit job applications and for employers to manage and track those applications. The contract uses a series of mappings to store applications by their ID, the job they are associated with, and the user who submitted them. It also includes functions for submitting, withdrawing, and retrieving applications, as well as emitting events for each of those actions.

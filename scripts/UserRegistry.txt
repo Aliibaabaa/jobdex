@@ -1,0 +1,20 @@
+Sure, here's a revised script that focuses on the UserRegistry contract and provides more detailed explanations of its functions and variables:
+
+Hello and welcome to this tutorial on the UserRegistry smart contract! In this video, we'll be taking a closer look at the functions and variables defined in this contract and how they work.
+
+The UserRegistry contract is designed to provide a simple and efficient way to register and manage users on a decentralized application. It includes functions to register new users, retrieve user information by ID or wallet address, and check if a user is registered.
+
+Let's start by taking a look at the variables defined in this contract:
+
+- The first variable is the userCounter, which is used to keep track of the total number of users registered in the contract.
+- Next, we have a mapping called users, which stores user data indexed by their unique identifier. This mapping contains a User struct for each registered user, which includes information such as their ID, user type (JobSeeker or Employer), name, email, wallet address, and registration status.
+- We also have a mapping called userLookup, which stores user data indexed by their wallet address. This is used to quickly retrieve user information by wallet address without having to iterate through the users mapping.
+
+Now let's move on to the functions defined in this contract:
+
+- The registerUser function is used to register a new user with the given type, name, and email. When this function is called, it first checks if the user is already registered by calling the isUserRegistered function. If the user is not already registered, it increments the userCounter and creates a new User struct with the provided information. This struct is then stored in the users mapping and the userLookup mapping is updated. Finally, the function emits the UserRegistered event to notify other contracts and external applications that a new user has been registered.
+- The getUserById function is used to retrieve user information by their unique identifier. When this function is called with a valid user ID, it returns the User struct containing all of the user's information.
+- The getUserByAddress function is used to retrieve user information by their wallet address. When this function is called with a valid wallet address, it first looks up the user's ID in the userLookup mapping and then returns the User struct containing all of the user's information.
+- The isUserRegistered function is used to check if a user is already registered by their wallet address. When this function is called with a wallet address, it looks up the user's ID in the userLookup mapping and then returns the user's registration status.
+
+And that's a detailed overview of the UserRegistry smart contract! This contract provides a simple and efficient way to manage users on a decentralized application. Its functions allow for easy registration and retrieval of user information, while its variables store all necessary user data. I hope you found this tutorial helpful and informative!
