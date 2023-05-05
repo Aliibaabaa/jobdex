@@ -145,92 +145,305 @@
 // }
 // export default JobList;
 
-import React, { useState } from 'react';
-import Web3 from 'web3';
-import JobDetails from './jobDetails/JobDetails';
+import React, { useState } from "react";
+import Web3 from "web3";
+import JobDetails from "./jobDetails/JobDetails";
 
 const abi = [
-    {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "jobId",
-                "type": "uint256"
-            },
-            {
-                "internalType": "string",
-                "name": "coverLetter",
-                "type": "string"
-            }
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "uint256",
+        name: "applicationId",
+        type: "uint256",
+      },
+      {
+        indexed: true,
+        internalType: "uint256",
+        name: "jobId",
+        type: "uint256",
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "applicant",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "string",
+        name: "coverLetter",
+        type: "string",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "timestamp",
+        type: "uint256",
+      },
+    ],
+    name: "ApplicationSubmitted",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "uint256",
+        name: "applicationId",
+        type: "uint256",
+      },
+    ],
+    name: "ApplicationWithdrawn",
+    type: "event",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "_applicationId",
+        type: "uint256",
+      },
+    ],
+    name: "getApplication",
+    outputs: [
+      {
+        components: [
+          {
+            internalType: "uint256",
+            name: "id",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "jobId",
+            type: "uint256",
+          },
+          {
+            internalType: "address",
+            name: "applicant",
+            type: "address",
+          },
+          {
+            internalType: "string",
+            name: "coverLetter",
+            type: "string",
+          },
+          {
+            internalType: "uint256",
+            name: "timestamp",
+            type: "uint256",
+          },
+          {
+            internalType: "bool",
+            name: "isWithdrawn",
+            type: "bool",
+          },
         ],
-        "name": "submitApplication",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    }
+        internalType: "struct JobApplication.Application",
+        name: "",
+        type: "tuple",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "_jobId",
+        type: "uint256",
+      },
+    ],
+    name: "getApplicationsByJob",
+    outputs: [
+      {
+        components: [
+          {
+            internalType: "uint256",
+            name: "id",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "jobId",
+            type: "uint256",
+          },
+          {
+            internalType: "address",
+            name: "applicant",
+            type: "address",
+          },
+          {
+            internalType: "string",
+            name: "coverLetter",
+            type: "string",
+          },
+          {
+            internalType: "uint256",
+            name: "timestamp",
+            type: "uint256",
+          },
+          {
+            internalType: "bool",
+            name: "isWithdrawn",
+            type: "bool",
+          },
+        ],
+        internalType: "struct JobApplication.Application[]",
+        name: "",
+        type: "tuple[]",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_applicant",
+        type: "address",
+      },
+    ],
+    name: "getApplicationsByUser",
+    outputs: [
+      {
+        components: [
+          {
+            internalType: "uint256",
+            name: "id",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "jobId",
+            type: "uint256",
+          },
+          {
+            internalType: "address",
+            name: "applicant",
+            type: "address",
+          },
+          {
+            internalType: "string",
+            name: "coverLetter",
+            type: "string",
+          },
+          {
+            internalType: "uint256",
+            name: "timestamp",
+            type: "uint256",
+          },
+          {
+            internalType: "bool",
+            name: "isWithdrawn",
+            type: "bool",
+          },
+        ],
+        internalType: "struct JobApplication.Application[]",
+        name: "",
+        type: "tuple[]",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "_jobId",
+        type: "uint256",
+      },
+      {
+        internalType: "string",
+        name: "_coverLetter",
+        type: "string",
+      },
+    ],
+    name: "submitApplication",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "_applicationId",
+        type: "uint256",
+      },
+    ],
+    name: "withdrawApplication",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
 ];
 
 const web3 = new Web3(Web3.givenProvider);
-const contractAddress = '0xd9145CCE52D386f254917e481eB44e9943F39138'; // Replace with your contract address
+const contractAddress = "0xbe0a81eB4371A5885bFb48AEF344cB90FcBBDA50"; // Replace with your contract address
 
-const jobApplicationContract = new web3.eth.Contract(
-    abi,
-    contractAddress
-);
+const jobApplicationContract = new web3.eth.Contract(abi, contractAddress);
 
 function JobList() {
-    const [account, setAccount] = useState('');
-    const [jobs, setJobs] = useState(JobDetails);
-    const [coverLetter, setCoverLetter] = useState('');
+  const [account, setAccount] = useState("");
+  const [jobs, setJobs] = useState(JobDetails);
+  const [coverLetter, setCoverLetter] = useState("");
 
-    async function connectWallet() {
-        if (window.ethereum) {
-            try {
-                const accounts = await window.ethereum.request({
-                    method: 'eth_requestAccounts',
-                });
-                setAccount(accounts[0]);
-            } catch (error) {
-                console.error(error);
-            }
-        } else {
-            console.error('Metamask not detected');
-        }
+  async function connectWallet() {
+    if (window.ethereum) {
+      try {
+        const accounts = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
+        setAccount(accounts[0]);
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      console.error("Metamask not detected");
     }
+  }
 
-    async function submitApplication(jobId) {
-        try {
-            const tx = await jobApplicationContract.methods
-                .submitApplication(jobId, coverLetter)
-                .send({ from: account });
-            console.log('Transaction hash:', tx.transactionHash);
-        } catch (error) {
-            console.error(error);
-        }
+  async function submitApplication(jobId) {
+    try {
+      const tx = await jobApplicationContract.methods
+        .submitApplication(jobId, coverLetter)
+        .send({ from: account });
+      console.log("Transaction hash:", tx.transactionHash);
+    } catch (error) {
+      console.error(error);
     }
+  }
 
-    function handleApply(jobId) {
-        submitApplication(jobId);
-    }
+  function handleApply(jobId) {
+    submitApplication(jobId);
+  }
 
-    return (
-        <div>
-            <h1>Job List</h1>
-            <button onClick={connectWallet}>Connect Wallet</button>
-            {jobs.map((job) => (
-                <div key={job.id}>
-                    <h3>{job.title}</h3>
-                    <p>{job.description}</p>
-                    <input
-                        type="text"
-                        value={coverLetter}
-                        onChange={(event) => setCoverLetter(event.target.value)}
-                    />
-                    <button onClick={() => handleApply(job.id)}>Apply</button>
-                </div>
-            ))}
+  return (
+    <div>
+      <h1>Job List</h1>
+      <button onClick={connectWallet}>Connect Wallet</button>
+      {jobs.map((job) => (
+        <div key={job.id}>
+          <h3>{job.title}</h3>
+          <p>{job.description}</p>
+          <input
+            type="text"
+            value={coverLetter}
+            onChange={(event) => setCoverLetter(event.target.value)}
+          />
+          <button onClick={() => handleApply(job.id)}>Apply</button>
         </div>
-    );
+      ))}
+    </div>
+  );
 }
 
 export default JobList;
